@@ -3,3 +3,7 @@
 
 # Extracted dataset files (redundant - we have archive.zip committed)
 data/
+
+# Feature tracking database (personal notes, not part of project)
+feature_investigation.db
+feature_tracker.py
