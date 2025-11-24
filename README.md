@@ -6,20 +6,6 @@
 
 A hybrid machine learning system combining rule-based filtering with XGBoost classification to detect phishing URLs with 99.995% recall and zero false positives.
 
-## Table of Contents
-
-- [Dataset](#dataset)
-- [Business Requirements](#business-requirements)
-- [Hypotheses and Validation](#hypotheses-and-validation)
-- [ML Business Case](#ml-business-case)
-- [Dashboard Design](#dashboard-design)
-- [Project Structure](#project-structure)
-- [Installation and Usage](#installation-and-usage)
-- [Technologies Used](#technologies-used)
-- [Credits](#credits)
-
----
-
 ## Dataset
 
 ### Dataset Source
