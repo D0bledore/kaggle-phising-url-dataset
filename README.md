@@ -285,27 +285,29 @@ app.py                      # Multi-page orchestrator (68 lines)
 ```
 .
 ├── data/
-│   └── dataset4.csv                    # Selected dataset (235,795 URLs)
+│   └── dataset4.csv                    # Selected dataset (235,795 URLs, 55MB)
 ├── models/
 │   └── xgb_model.pkl                   # Trained XGBoost model
 ├── src/
 │   ├── __init__.py
-│   ├── data_management.py              # Data loading functions
+│   ├── data_management.py              # Data loading with caching
 │   └── detection.py                    # Violation detection logic
 ├── app_pages/
 │   ├── __init__.py
-│   ├── page_summary.py                 # Project overview page
-│   ├── page_study.py                   # Data analysis page
-│   ├── page_hypothesis.py              # Hypotheses validation page
-│   ├── page_performance.py             # Model performance page
-│   └── page_detection.py               # Interactive demo page
-├── 1. Exploration.ipynb                # Notebook 1: Dataset exploration
-├── 2. Rule-Based Model.ipynb           # Notebook 2: Rule development
-├── 3. ML Model.ipynb                   # Notebook 3: XGBoost training
-├── 4. Deployment.ipynb                 # Notebook 4: Model deployment
-├── app.py                              # Streamlit dashboard orchestrator
+│   ├── page_summary.py                 # Project overview
+│   ├── page_study.py                   # Data analysis
+│   ├── page_hypothesis.py              # Hypothesis validation
+│   ├── page_performance.py             # Model performance
+│   └── page_detection.py               # Interactive demo
+├── 1. Exploration.ipynb                # Dataset exploration
+├── 2. Rule-Based Model.ipynb           # Rule development
+├── 3. ML Model.ipynb                   # XGBoost training
+├── 4. Deployment.ipynb                 # Model deployment
+├── app.py                              # Streamlit orchestrator
 ├── requirements.txt                    # Python dependencies
-└── README.md                           # This file
+├── archive.zip                         # Original dataset archive
+├── .gitignore                          # Git exclusions
+└── README.md                           # Documentation
 ```
 
 ---
@@ -314,15 +316,15 @@ app.py                      # Multi-page orchestrator (68 lines)
 
 ### Prerequisites
 
-- Python 3.8+
+- Python 3.9+
 - pip package manager
 
 ### Installation
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
-cd kaggle
+git clone https://github.com/d0bledore/kaggle-phising-url-dataset.git
+cd kaggle-phising-url-dataset
 ```
 
 2. Install dependencies:
