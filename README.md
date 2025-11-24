@@ -371,30 +371,27 @@ jupyter notebook
 
 ## Deployment
 
-### Streamlit Cloud Deployment (Recommended)
+### Live Application
 
-Ready for one-click deployment:
+The dashboard is deployed on Streamlit Cloud:
 
-1. **Push to GitHub**
-   ```bash
-   git push origin main
-   ```
+**https://pp5-phising.streamlit.app/**
 
-2. **Deploy on Streamlit Cloud**
-   - Visit [share.streamlit.io](https://share.streamlit.io)
-   - Sign in with GitHub
-   - Click "New app" → Select repo + main branch + app.py
-   - Click "Deploy"
+### Deployment Details
 
-3. **First Deploy**
-   - Installs dependencies from requirements.txt
-   - Loads data/dataset4.csv (55MB) and models/xgb_model.pkl
-   - Live in ~2 minutes at `your-app.streamlit.app`
+**Platform:** Streamlit Cloud (Free Tier)
+
+**Deployment Process:**
+1. Repository connected to Streamlit Cloud via GitHub
+2. Auto-deploys on push to main branch
+3. Installs dependencies from requirements.txt
+4. Loads data/dataset4.csv (55MB) and models/xgb_model.pkl
+5. Live in ~2 minutes after each push
 
 **Requirements:**
 - Data files committed to repo (dataset4.csv and xgb_model.pkl)
 - ~500MB RAM (free tier covers this)
-- Python 3.9+ with requirements.txt
+- Python 3.9+ with requirements.txt dependencies
 
 ### Local Development
 
