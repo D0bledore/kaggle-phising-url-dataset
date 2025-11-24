@@ -156,9 +156,9 @@ All 6 hypotheses were validated with strong statistical evidence, directly infor
 **Problem**: After developing 6 perfect-precision rules, 13.6% of phishing (13,740 URLs) still passed through. These sophisticated phishing sites mimicked legitimate patterns across all 6 rules.
 
 **Traditional Approach Limitation**: Individual weak signals had insufficient precision:
-- HasSocialNet=0: Only 78% precision (would block 27,704 legitimate sites)
-- Robots=0: Only 85% precision individually
-- IsResponsive=0: Similar precision issues
+- HasSocialNet=0: Only 78.38% precision (would block 27,704 legitimate sites)
+- Robots=0: Only 54.52% precision (would block 78,653 legitimate sites)
+- IsResponsive=0: Only 77.82% precision (would block 19,639 legitimate sites)
 
 **ML Solution**: Combine weak signals intelligently to achieve high precision without false positives.
 
