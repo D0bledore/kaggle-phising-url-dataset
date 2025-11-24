@@ -1,4 +1,8 @@
-# Phishing URL Detection System
+# [Phishing URL Detection System](https://pp5-phising.streamlit.app/)
+
+[![GitHub commit activity](https://img.shields.io/github/commit-activity/t/d0bledore/kaggle-phising-url-dataset)](https://github.com/d0bledore/kaggle-phising-url-dataset/commits/main)
+[![GitHub last commit](https://img.shields.io/github/last-commit/d0bledore/kaggle-phising-url-dataset)](https://github.com/d0bledore/kaggle-phising-url-dataset/commits/main)
+[![GitHub repo size](https://img.shields.io/github/repo-size/d0bledore/kaggle-phising-url-dataset)](https://github.com/d0bledore/kaggle-phising-url-dataset)
 
 A hybrid machine learning system combining rule-based filtering with XGBoost classification to detect phishing URLs with 99.995% recall and zero false positives.
 
