@@ -110,19 +110,19 @@ Before building the detection system, I formulated 6 hypotheses based on domain 
 **H1: Resource Minimalism**
 - **Hypothesis**: Phishing sites use significantly fewer web resources (JS, CSS, images) than legitimate sites
 - **Rationale**: Attackers prioritize speed over quality for quick deployment
-- **Validation**: 24.9% of phishing have zero resources vs 0.9% of legitimate (27.7x difference)
+- **Validation**: 68.56% of phishing have zero resources vs 0.01% of legitimate (6856x difference)
 - **Result**: VALIDATED ✓ → Justifies Rule 1 (Zero Resources)
 
 **H2: HTTPS Gap**
 - **Hypothesis**: Phishing sites are less likely to use HTTPS encryption
 - **Rationale**: SSL certificates require domain validation, creating barriers for temporary/fake domains
-- **Validation**: 22.8% of phishing use HTTPS vs 92.8% of legitimate (70 percentage point gap)
+- **Validation**: 50.78% of phishing lack HTTPS vs 0% of legitimate (100% of legitimate use HTTPS)
 - **Result**: VALIDATED ✓ → Justifies Rule 2 (No HTTPS)
 
 **H3: Trust Signal Absence**
 - **Hypothesis**: Phishing sites lack trust signals (title, favicon, description, copyright)
 - **Rationale**: Legitimate businesses invest in branding; phishing sites skip details to deploy faster
-- **Validation**: 24.7% of phishing have zero trust signals vs 0.9% of legitimate (27.4x difference)
+- **Validation**: 31.10% of phishing have zero trust signals vs 0.01% of legitimate (3110x difference)
 - **Result**: VALIDATED ✓ → Justifies Rule 4 (Zero Trust Signals)
 
 ### Technical Hypotheses (Perfect Precision)
