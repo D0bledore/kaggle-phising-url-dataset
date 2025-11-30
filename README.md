@@ -1,10 +1,56 @@
-# [Phishing URL Detection System](https://pp5-phising.streamlit.app/)
+# Phishing URL Detection System
+
+[![Live Demo](https://img.shields.io/badge/Live-Demo-success?style=for-the-badge)](https://pp5-phising.streamlit.app/)
 
 [![GitHub commit activity](https://img.shields.io/github/commit-activity/t/d0bledore/kaggle-phising-url-dataset)](https://github.com/d0bledore/kaggle-phising-url-dataset/commits/main)
 [![GitHub last commit](https://img.shields.io/github/last-commit/d0bledore/kaggle-phising-url-dataset)](https://github.com/d0bledore/kaggle-phising-url-dataset/commits/main)
 [![GitHub repo size](https://img.shields.io/github/repo-size/d0bledore/kaggle-phising-url-dataset)](https://github.com/d0bledore/kaggle-phising-url-dataset)
 
-A hybrid machine learning system combining rule-based filtering with XGBoost classification to detect phishing URLs with 99.995% recall and zero false positives.
+A hybrid machine learning system combining rule-based filtering with XGBoost classification to detect phishing URLs.
+
+![Dashboard Screenshot](docs/dashboard-preview.png)
+
+## Key Results
+
+| Metric | Score |
+|--------|-------|
+| Recall | 99.995% |
+| False Positive Rate | 0% |
+| Rule Coverage | 86.4% |
+| ML Coverage | 13.6% |
+
+## Quick Start
+
+```bash
+git clone https://github.com/d0bledore/kaggle-phising-url-dataset.git
+cd kaggle-phising-url-dataset
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+Or try the [Live Demo](https://pp5-phising.streamlit.app/) instantly.
+
+---
+
+## Features
+
+The Streamlit dashboard consists of 5 pages:
+
+| Page | Description |
+|------|-------------|
+| **Project Summary** | Business requirements, dataset overview, terminology |
+| **Data Study** | Dataset distribution, HTTPS analysis, detection rules, coverage |
+| **Hypothesis & Validation** | 6 hypotheses with statistical validation |
+| **ML Performance** | Model comparison, confusion matrix, feature importance |
+| **Detection Demo** | Interactive URL testing with violation detection |
+
+### Design Philosophy
+
+- **Search-Driven**: Users search 235K URLs (dropdown would be unusable)
+- **Comprehensive Violations**: Shows ALL warning signs, not just first match
+- **Educational Focus**: Clear explanations for every metric and visualization
+
+---
 
 ## Dataset
 
@@ -101,11 +147,13 @@ The project addresses 3 critical business needs:
 
 ---
 
-## Hypotheses and Validation
+## Technical Approach
 
-Before building the detection system, I formulated 6 hypotheses based on domain knowledge about phishing attacks. Each was systematically validated using the dataset.
+### Hypotheses and Validation
 
-### Behavioral Hypotheses (Measurable Differences)
+Before building the detection system, 6 hypotheses were formulated based on domain knowledge about phishing attacks. Each was systematically validated using the dataset.
+
+#### Behavioral Hypotheses
 
 **H1: Resource Minimalism**
 - **Hypothesis**: Phishing sites use significantly fewer web resources (JS, CSS, images) than legitimate sites
@@ -125,7 +173,7 @@ Before building the detection system, I formulated 6 hypotheses based on domain 
 - **Validation**: 31.10% of phishing have zero trust signals vs 0.01% of legitimate (3110x difference)
 - **Result**: VALIDATED ✓ → Justifies Rule 4 (Zero Trust Signals)
 
-### Technical Hypotheses (Perfect Precision)
+#### Technical Hypotheses
 
 **H4: IP Address Domain Usage**
 - **Hypothesis**: Phishing sites use IP addresses as domains instead of registered names
@@ -147,11 +195,9 @@ Before building the detection system, I formulated 6 hypotheses based on domain 
 
 All 6 hypotheses were validated with strong statistical evidence, directly informing the 6 detection rules.
 
----
+### Machine Learning
 
-## ML Business Case
-
-### Why Machine Learning?
+#### Why Machine Learning?
 
 **Problem**: After developing 6 perfect-precision rules, 13.6% of phishing (13,740 URLs) still passed through. These sophisticated phishing sites mimicked legitimate patterns across all 6 rules.
 
@@ -162,7 +208,7 @@ All 6 hypotheses were validated with strong statistical evidence, directly infor
 
 **ML Solution**: Combine weak signals intelligently to achieve high precision without false positives.
 
-### Model Selection Rationale
+#### Model Selection
 
 **Algorithms Considered:**
 
@@ -182,7 +228,7 @@ All 6 hypotheses were validated with strong statistical evidence, directly infor
 
 **Final Decision**: XGBoost selected for highest recall while maintaining zero false positives.
 
-### Business Value
+#### Business Value
 
 **Quantified Benefits:**
 
@@ -197,86 +243,6 @@ All 6 hypotheses were validated with strong statistical evidence, directly infor
 - **Cost of False Positive** (blocked legitimate): Business reputation loss, client frustration
 - **System Performance**: 99.99% recall minimizes FN, 0% FP eliminates FP costs
 - **Business Outcome**: Consultant staff can confidently use system for client guidance
-
----
-
-## Dashboard Design
-
-### Multi-Page Structure
-
-The Streamlit dashboard consists of 5 pages designed to meet PP5 assessment criteria:
-
-**1. Project Summary**
-- Business requirements with user stories
-- Dataset overview
-- Project terminology (phishing, false positives, recall, precision, hybrid approach)
-- **Addresses**: LO6.1 (describe project outcomes and business requirements)
-
-**2. Data Study**
-- Dataset distribution (235K URLs, 43/57 phishing/legitimate split)
-- HTTPS adoption analysis with interpretation
-- The 6 detection rules with coverage data
-- Coverage analysis (86.4% rule-based, 13.6% ML-based)
-- **Addresses**: LO6.2 (show plots with interpretation)
-
-**3. Hypothesis & Validation**
-- All 6 hypotheses with statistical validation
-- Metric comparisons (phishing vs legitimate rates)
-- Validation results (all confirmed)
-- Summary connecting hypotheses to rules
-- **Addresses**: LO6.1 (describe hypotheses and validation)
-
-**4. ML Performance**
-- Model comparison (Random Forest vs XGBoost)
-- Confusion matrix visualization with interpretation
-- Performance metrics (recall, precision, F1, accuracy)
-- Feature importance plot with top 10 features
-- Edge case analysis ("The One That Got Away")
-- Hybrid system performance summary
-- **Addresses**: LO6.2 (show model performance, plots with interpretation)
-
-**5. Detection Demo**
-- Interactive URL search and filter interface
-- Real-time violation detection (shows ALL violations found)
-- ML scoring for clean URLs (probability, risk assessment)
-- Feature breakdown display
-- **Addresses**: LO6.3 (interactive inputs for predictions)
-
-### Design Philosophy
-
-**Search-Driven Interaction**
-- Users search for URLs (235K dropdown would be unusable)
-- Shows 10 results max (manageable, realistic)
-- Filters: Label, Protocol, TLD, Violations
-
-**Comprehensive Violation Display**
-- Shows ALL warning signs (not just first match)
-- Example: "5 violations: No HTTPS, Zero Resources, IP Domain, Long URL, Zero Trust"
-- More convincing evidence for educational use
-- Matches how humans analyze phishing
-
-**Educational Focus**
-- Clear explanations for every metric and visualization
-- "Why" behind each detection rule
-- Interpretation sections for all plots
-- Risk assessment with recommendations (HIGH/MEDIUM/LOW)
-
-### Modular Code Structure
-
-Dashboard follows LO5.6 requirements for modularity:
-
-```
-app.py                      # Multi-page orchestrator (68 lines)
-├── app_pages/
-│   ├── page_summary.py     # Business requirements, dataset, terms
-│   ├── page_study.py       # Data analysis, rules, coverage
-│   ├── page_hypothesis.py  # Hypotheses validation
-│   ├── page_performance.py # Model metrics, confusion matrix
-│   └── page_detection.py   # Interactive URL testing
-└── src/
-    ├── data_management.py  # load_data(), load_model()
-    └── detection.py        # detect_violations()
-```
 
 ---
 
@@ -521,34 +487,4 @@ This project represents not just a technical achievement, but a significant mile
 
 ## License
 
-This project is licensed under the MIT License - see below for details.
-
-MIT License
-
-Copyright (c) 2025
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
----
-
-**Project Status**: Completed
-
-**Last Updated**: November 2025
-
-**Version**: 1.0
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
