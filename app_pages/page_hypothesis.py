@@ -11,7 +11,7 @@ def page_hypothesis_body():
     st.write("## Hypotheses & Validation")
 
     st.info(
-        "Before building the detection system, I formulated 3 core hypotheses based on domain knowledge "
+        "Before building the detection system, I formulated 6 hypotheses based on domain knowledge "
         "about phishing attacks. Each hypothesis was systematically validated using the dataset."
     )
 
